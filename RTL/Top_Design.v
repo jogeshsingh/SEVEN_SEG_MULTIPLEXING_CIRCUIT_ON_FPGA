@@ -27,21 +27,20 @@ module Top_Design(
 input i_clk  , 
 //input i_rst_n ,
 input [`WIDTH_DATA-1:0] data_in , 
-output [`WIDTH_SEG_EN-1:0] an_seg ,
+output [`WIDTH_SEG_EN-1:0] an_seg , 
 output [`WIDTH_SEG_EN-1:0] a_seg ,  
 output [`WIDTH_SEG_OUT-1:0] Sseg_out
     );
 
-assign a_seg = 4'b1111;
+assign a_seg = 4'b1111;  //this output is used to turn the rest 4 seven seg display off //
 wire [`WIDTH_Seg-1:0] S_out ; 
 wire clk_out ;
     
-   // count_2bit(.i_clk(clk_out),.i_rst_n(i_rst_n), .count_out(o_cnt));
     
-    Seven_seg  SEVEN_SEG1(.i_data(S_out) , .seg_out(Sseg_out));
-    Clk_div CLK_1HZ(.i_clk(i_clk) , .clk_div(clk_out)); 
+Seven_seg  SEVEN_SEG1(.i_data(S_out) , .seg_out(Sseg_out));
+Clk_div CLK_1HZ(.i_clk(i_clk) , .clk_div(clk_out)); 
     
-    Mux_seven_seg MUX(.i_clk(clk_out) ,
+Mux_seven_seg MUX(.i_clk(clk_out) ,
      .o_seg1(data_in[3:0]) ,
      .o_seg2(data_in[7:4])  , 
      .o_seg3(data_in[11:8]) ,
