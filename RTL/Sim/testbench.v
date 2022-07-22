@@ -19,7 +19,7 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-
+/***NOTE -::::: To see the functionality of entire design , you need to drag the DUT(Design under test) to waveform window and then restart the simulation .**//
 module testbench();
 reg i_clk ;
 reg [15:0] data_in ;
