@@ -20,15 +20,15 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 ///fpga clock = 100MHZ 
-///required clock rate = 10Khz = 10_000 
-///clk_div = 100MHZ/100KHZ = 10_000; (0 to 4999 ---first half clk cycle (active high) and 5000 to 9999 --next half clk cycle (active low))
-`define CLK_CNT_WIDTH 13
+///required clock rate = 1HZ  
+///clk_div = 100MHZ/50MHZ = 2(0 and 1); (0  ---first half clk cycle (active low) and 1 next half clk cycle (active low))
+`define CLK_CNT_WIDTH 26
 module Clk_div(i_clk , clk_div);
 input i_clk ;
 output clk_div ;
 
 
-parameter CLK_COUNT = 5000;
+parameter CLK_COUNT = 50_000_000;
 reg [`CLK_CNT_WIDTH-1:0] clk_cnt = 0;
 
 reg toggle_1HZ = 0;
